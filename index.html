@@ -89,10 +89,17 @@
     });
 })();
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-const AdController = window.Adsgram.init({blockId:"reward-30729"});
-window.openRewardAd = function(cb){
-AdController.show().then(()=>cb(true)).catch(()=>cb(false))
-}
-})
+// 先预留广告方法，游戏调用不会崩溃
+window.openRewardAd = function(callback){
+    callback(false);
+};
+// 延迟2秒，等游戏完全加载完成，再初始化广告
+setTimeout(function(){
+  if(window.Adsgram){
+    const AdController = window.Adsgram.init({blockId:"reward-30729"});
+    window.openRewardAd = function(cb){
+      AdController.show().then(()=>cb(true)).catch(()=>cb(false))
+    }
+  }
+},2000);
 </script>
