@@ -89,17 +89,14 @@
     });
 })();
 <script>
-// 先预留广告方法，游戏调用不会崩溃
-window.openRewardAd = function(callback){
-    callback(false);
-};
-// 延迟2秒，等游戏完全加载完成，再初始化广告
-setTimeout(function(){
-  if(window.Adsgram){
-    const AdController = window.Adsgram.init({blockId:"reward-30729"});
-    window.openRewardAd = function(cb){
-      AdController.show().then(()=>cb(true)).catch(()=>cb(false))
-    }
-  }
-},2000);
+//初始化广告位
+const AdController = window.Adsgram.init({ blockId: "reward-30729" });
+//和你游戏代码对接的广告唤起函数
+window.openRewardAd = function(callback) {
+  AdController.show().then(()=>{
+      callback(true);
+  }).catch(()=>{
+      callback(false);
+  })
+}
 </script>
