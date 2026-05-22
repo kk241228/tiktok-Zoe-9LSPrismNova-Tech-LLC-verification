@@ -83,11 +83,14 @@
       if (CC_PHYSICS_BUILTIN || CC_PHYSICS_CANNON) {
         loadScript(debug ? 'physics.js' : 'physics-min.7f489.js', window.boot);
       }
-      else {
+    else {
         window.boot();
       }
     });
 })();
+</script>
+
+<!--AdsGram广告初始化与全局广告方法-->
 <script>
 //初始化广告位
 const AdController = window.Adsgram.init({ blockId: "reward-30729" });
@@ -100,3 +103,6 @@ window.openRewardAd = function(callback) {
   })
 }
 </script>
+
+</body>
+</html>
