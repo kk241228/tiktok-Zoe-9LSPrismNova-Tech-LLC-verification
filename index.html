@@ -88,13 +88,10 @@
       }
     });
 })();
-</script>
-
-<!--AdsGram广告初始化与全局广告方法-->
 <script>
-//初始化广告位
-const AdController = window.Adsgram.init({ blockId: "int‑30730" });
-//和你游戏代码对接的广告唤起函数
+//等页面全部加载完毕，再初始化广告
+window.onload = function(){
+const AdController = window.Adsgram.init({ blockId: "int-30730" });
 window.openRewardAd = function(callback) {
   AdController.show().then(()=>{
       callback(true);
@@ -102,7 +99,5 @@ window.openRewardAd = function(callback) {
       callback(false);
   })
 }
+}
 </script>
-
-</body>
-</html> 
