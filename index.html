@@ -89,15 +89,10 @@
     });
 })();
 <script>
-//等页面全部加载完毕，再初始化广告
-window.onload = function(){
-const AdController = window.Adsgram.init({ blockId: "int-30730" });
-window.openRewardAd = function(callback) {
-  AdController.show().then(()=>{
-      callback(true);
-  }).catch(()=>{
-      callback(false);
-  })
+document.addEventListener('DOMContentLoaded', function() {
+const AdController = window.Adsgram.init({blockId:"reward-30729"});
+window.openRewardAd = function(cb){
+AdController.show().then(()=>cb(true)).catch(()=>cb(false))
 }
-}
+})
 </script>
